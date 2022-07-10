@@ -46,8 +46,7 @@ The animation API is only has a single macro that is used to define the animatio
 
 |Macro|Parameters|Description|
 |-----|----------|-----------|
-|animation.Define|firstPattern, frameCount, frameDelay, mode, stopAfter|Defines an animation. The animation will run from the firstPattern to firstPatter+frameCount, with an update occuring every frameDelay. If the updates (see Game Objects), are synchronized with the frame rate then the number specified will effectively be the number of screen frames before moving to the next animation frame.
-The `mode` parameter controls what happens when you reach the end of the animation sequence ie. the last frame.|
+|animation.Define|firstPattern, frameCount, frameDelay, mode, stopAfter|Defines an animation. The animation will run from the firstPattern to firstPatter+frameCount, with an update occuring every frameDelay. If the updates (see Game Objects), are synchronized with the frame rate then the number specified will effectively be the number of screen frames before moving to the next animation frame. The `mode` parameter controls what happens when you reach the end of the animation sequence ie. the last frame.|
 
 Animation modes
 
@@ -57,8 +56,7 @@ Animation modes
 |animation.modeRestart|Restart at the first frame for the next update after reaching the last frame|
 |animation.modeReverse|Reverse the animation and step backward through the frames. When the first frame is reached, the animation will again reverse and run forward again|
 |animation.modeRotateRight|Restarts the animation and automatically applies Mirroring and Rotation to the sprite for the next cycle through the animation. Using this with only two frames, one pointing up and the other pointing to the right at 45 degrees will allow a full rotation of the animated sprite through 8 positions.|
-|animation.modeRotateLeft|Similar to `animation.modeRotateRight` except that it runs through the mirroring and rotation in reverse allowing for anti-clockwise rotation. Currently this does require a frame sequence that is pre-flipped, but this functionality will be enhanced.|
-`stopAfter` will run the animation until the specified number of frames have been completed. As an example you could have something use the rotation animation, run through `n` steps of the animation and then stop as part of a dying sequence for a game character.|
+|animation.modeRotateLeft|Similar to `animation.modeRotateRight` except that it runs through the mirroring and rotation in reverse allowing for anti-clockwise rotation. Currently this does require a frame sequence that is pre-flipped, but this functionality will be enhanced. `stopAfter` will stop the animation after the specified number of frames have been completed. As an example you could the rotation animation, run through `n` steps of the animation before it stops as part of a dying sequence for a game character.|
 
 ## Game Objects
 Game objects tie the sprites and the animation system together. By creating a game object with a specified sprite and optional animation the animation engine will use the specified animation to control the sprite pattern to create the desired visual effect.

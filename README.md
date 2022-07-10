@@ -48,14 +48,15 @@ The animation API is only has a single macro that is used to define the animatio
 |-----|----------|-----------|
 |animation.Define|firstPattern, frameCount, frameDelay, mode, stopAfter|Defines an animation. The animation will run from the firstPattern to firstPatter+frameCount, with an update occuring every frameDelay. If the updates (see Game Objects), are synchronized with the frame rate then the number specified will effectively be the number of screen frames before moving to the next animation frame.
 The `mode` parameter controls what happens when you reach the end of the animation sequence ie. the last frame. Options are
-|Mode|Description|
-|----|----------|
-|animation.modeStop|Stop the animation when the last frame is reached|
-|animation.modeRestart|Restart at the first frame for the next update after reaching the last frame|
-|animation.modeReverse|Reverse the animation and step backward through the frames. When the first frame is reached, the animation will again reverse and run forward again|
-|animation.modeRotateRight|Restarts the animation and automatically applies Mirroring and Rotation to the sprite for the next cycle through the animation. Using this with only two frames, one pointing up and the other pointing to the right at 45 degrees will allow a full rotation of the animated sprite through 8 positions.|
-|animation.modeRotateLeft|Similar to `animation.modeRotateRight` except that it runs through the mirroring and rotation in reverse allowing for anti-clockwise rotation. Currently this does require a frame sequence that is pre-flipped, but this functionality will be enhanced.|
-`stopAfter` will run the animation until the specified number of frames have been completed. As an example you could have something use the rotation animation, run through `n` steps of the animation and then stop as part of a dying sequence for a game character.
+<table>
+    <thead><th>Mode</th><th>Description</th></thead>
+    <tr><td>animation.modeStop</td><td>Stop the animation when the last frame is reached|
+    <tr><td>animation.modeRestart</td><td>Restart at the first frame for the next update after reaching the last frame|
+    <tr><td>animation.modeReverse</td><td>Reverse the animation and step backward through the frames. When the first frame is reached, the animation will again reverse and run forward again</td></tr>
+    <tr><td>animation.modeRotateRight</td><td>Restarts the animation and automatically applies Mirroring and Rotation to the sprite for the next cycle through the animation. Using this with only two frames, one pointing up and the other pointing to the right at 45 degrees will allow a full rotation of the animated sprite through 8 positions.</td></tr>
+    <tr><td>animation.modeRotateLeft</td><td>Similar to `animation.modeRotateRight` except that it runs through the mirroring and rotation in reverse allowing for anti-clockwise rotation. Currently this does require a frame sequence that is pre-flipped, but this functionality will be enhanced.|
+    `stopAfter` will run the animation until the specified number of frames have been completed. As an example you could have something use the rotation animation, run through `n` steps of the animation and then stop as part of a dying sequence for a game character.</td></tr>
+</table>
 |
 
 ## Game Objects
@@ -74,10 +75,10 @@ As with sprites, the API for the game objects is exposed through a set of macros
 |gameobj.Hide|obj|Hides the specified game object|
 |gameobj.SetPos|obj, xpos, ypos|Set the screen position of the specified game object.`xpos` is a 9-bit value, `ypos` is a 8-bit value|
 |gameobj.SetAnimation|obj, animation, flags|Changes the animation associated with the game object. In addition flags can be passed to apply any mirroring or rotation. Note when using an animation with `animation.modeRotate` the animation rotation will override this. The possible flags currently include the following that can be combined with an `or` operator.
-|Flag|Description|
-|----|-----------|
-|gameobj.flagRotateSet|Sets the rotate flag|
-|gameobj.flagMirrorYSet|Sets the Mirror-Y flag|
-|gameobj.flagMirrorXSet|Sets the Mirror-X flag|
-|
+<table>
+  <thead><th>Flag</th><th>Description</th></thead>
+  <tr><td>gameobj.flagRotateSet</td><td>Sets the rotate flag</td></tr>
+  <tr><td>gameobj.flagMirrorYSet</td><td>Sets the Mirror-Y flag</td></tr>
+  <tr><td>gameobj.flagMirrorXSet</td><td>Sets the Mirror-X flag</td></tr>
+</table>
 

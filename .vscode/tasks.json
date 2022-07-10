@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "D:/Temp/nextdev/emulator/sjasmplus",
+            "args": [
+                "src/main.asm",
+                "--zxnext=cspect",
+                "--inc=inc",
+                "--msg=war",
+                "--fullpath",
+                "--sym=spritelib.sym",
+                "--sld=spritelib.sld",
+                "--lst=spritelib.lst"
+            ],
+            "problemMatcher": {
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Update SDCard",
+            "type": "shell",
+            "command": "D:/Temp/nextdev/emulator/hdfmonkey put D:/Temp/nextdev/sdcard/tbblue-dev.sd spritelib.nex",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Launch CSpect",
+            "type": "shell",
+            "command": "D:/Temp/nextdev/emulator/cspect -r -w2 -brk -zxnext -nextrom -mmc=D:/Temp/nextdev/sdcard/tbblue-dev.sd",
+            "dependsOrder": "sequence",
+            "dependsOn": [],
+            "problemMatcher": []
+        }
+    ]
+}

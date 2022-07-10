@@ -37,7 +37,7 @@ gameobj.count  equ ($-gameobj.definedAt) / gameobj.S_GameObj
             ld a, (ix+gameobj.S_GameObj.state)  ; load state flags
             bit gameobj.stateActiveBit, a
             call nz, gameobj._update            ; only update active objects
-            add ix, de
+            add ix, de                          ; move to the next object
             djnz .update
             sprite.UpdateAll
         endm
@@ -194,7 +194,6 @@ _update:
         ld a, (ix+S_GameObj.state)
         xor stateAnimRevSet         ; flip direction flag
         ld (ix+S_GameObj.state), a
-
 
         bit stateAnimRevBit, a      ; Check if animation should be reversed
         jp nz, .changeDirectionBackward

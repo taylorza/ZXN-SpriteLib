@@ -3,7 +3,7 @@
         CSPECTMAP "spritelib.map"
 
         org     $8000
-        
+
         include <util.i.asm>
         include <sprite.i.asm>
         include <animation.i.asm>
@@ -16,6 +16,10 @@ main:
         sprite.EnableSprites
         sprite.ClearSprites
         sprite.Upload 25
+
+        sprite.Show staticSprite
+        sprite.SetPos staticSprite, 128, 0
+        sprite.SetPattern staticSprite, 22
 
         gameobj.Show player
         gameobj.Show car
@@ -45,6 +49,7 @@ gameLoop:
         ld (dy), a
 .update
         gameobj.SetPos spaceship, 128, (y)
+        
         gameobj.UpdateAll
 
         ld a, 6
@@ -64,6 +69,8 @@ spaceshipSprite sprite.DefineUnifiedAuto 27, 2, 4, 0    ; Auto create sprite for
                 sprite.DefineRelative 36, 16, 16, 0     ; these are still relative to the anchor defined by
                 sprite.DefineRelative 37, 0, 32, 0      ; sprite.DefineUnifiedAuto. Each of these could be labeled 
                 sprite.DefineRelative 38, 16, 32, 0     ; seperately to apply separate animations etc.
+
+staticSprite    sprite.Define 21
 
         sprite.EndDefinition
 

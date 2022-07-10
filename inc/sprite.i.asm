@@ -160,6 +160,17 @@
     endm
 
 ;------------------------------------------------------------------------------
+;sprite.SetPattern - Change the pattern for the specified sprite
+; Parameters:
+;       sprite - Sprite to update
+;       pattern - Pattern to select for the sprite
+    macro sprite.SetPattern sprite, pattern
+        ld ix, sprite
+        ld a, pattern ; load into A so we can handle address references
+        call sprite._setPattern
+    endm
+
+;------------------------------------------------------------------------------
 ; sprite.UpdateAll - Update all sprites
     macro sprite.UpdateAll
         call sprite._updateAll
@@ -339,6 +350,20 @@ _setActivePalette:
         nextreg $43, a      ; Update the register
         ret
 
+;------------------------------------------------------------------------------
+; sprite._setPattern - Change the pattern applied to the sprite
+; Input:
+;   IX  - Sprite to update
+;   A   - New pattern to apply to the sprite
+_setPattern:
+        and %00111111                   ; limit pattern 0-63
+        ld c, a                         ; put pattern in C
+        ld a, (ix+sprite.S_Sprite.vpat) ; load vpat attribute
+        and a, %11000000                ; mask off the pattern
+        or a, c                         ; combine new pattern
+        ld (ix+sprite.S_Sprite.vpat), a ; store updated attr
+        ret
+        
 ;------------------------------------------------------------------------------
 ; sprite._updateAll - Update the sprite hardware with the in memory structures
 _updateAll:

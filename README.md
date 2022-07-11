@@ -67,6 +67,8 @@ Animation modes
 |animation.modeRotateLeft|Similar to `animation.modeRotateRight` except that it runs through the mirroring and rotation in reverse allowing for anti-clockwise rotation. Currently this does require a frame sequence that is pre-flipped, but this functionality will be enhanced. `stopAfter` will stop the animation after the specified number of frames have been completed. As an example you could the rotation animation, run through `n` steps of the animation before it stops as part of a dying sequence for a game character.|
 
 ## Game Objects
+include <gameobj.i.asm>
+
 Game objects tie the sprites and the animation system together. By creating a game object with a specified sprite and optional animation the animation engine will use the specified animation to control the sprite pattern to create the desired visual effect.
 
 ### Macros

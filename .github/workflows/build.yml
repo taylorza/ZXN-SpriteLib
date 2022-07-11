@@ -1,0 +1,35 @@
+name: ZXN-SpriteLib
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup GCC
+      uses: egor-tensin/setup-gcc@v1
+      with:
+        version: latest
+        platform: x64
+
+    - name: Checkout sjasmplus
+      uses: actions/checkout@v3
+      with:
+        repository: 'https://github.com/ped7g/sjasmplus.git'
+        submodules: 'recursive'
+
+    - name: Build sjasmplus
+      run: cd sjasmplus \
+           && make clean \
+           && make -j4 \
+           && make install \
+           && cd .. \
+    
+    - name: Build ZXN-SpriteLib
+      run: sjasmplus src/main.asm --inc=inc --msg=war --fullpath 

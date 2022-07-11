@@ -3,6 +3,14 @@ Z80n Sprite library for the ZX Spectrum Next
 
 The intent is to develop a library that makes it easier to develop games in assembly language for the ZX Spectrum Next.
 
+## Assembling
+
+To assemble the sample application use the following `sjasmplus` command line
+
+```
+sjasmplus src/main.asm --inc=inc --msg=war --fullpath
+```
+
 ## Sprites
 include <sprite.i.asm>
 

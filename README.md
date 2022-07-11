@@ -1,4 +1,4 @@
-# ZXN-SpriteLib
+# ZXN-SpriteLib [![ZXN-SpriteLib](https://github.com/taylorza/ZXN-SpriteLib/actions/workflows/build.yml/badge.svg)](https://github.com/taylorza/ZXN-SpriteLib/actions/workflows/build.yml)
 Z80n Sprite library for the ZX Spectrum Next
 
 The intent is to develop a library that makes it easier to develop games in assembly language for the ZX Spectrum Next.

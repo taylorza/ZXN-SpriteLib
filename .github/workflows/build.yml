@@ -10,8 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-
     - name: Setup GCC
       uses: egor-tensin/setup-gcc@v1
       with:
@@ -26,6 +24,9 @@ jobs:
 
     - name: Build sjasmplus
       run: make clean && make -j4 && make install && cd ..
+    
+    - name: Checkout code
+      uses: actions/checkout@v3
     
     - name: Build ZXN-SpriteLib
       run: sjasmplus src/main.asm --inc=inc --msg=war --fullpath 

@@ -29,10 +29,10 @@ jobs:
     - name: Build sjasmplus
       run: >
         cd sjasmplus
-        make clean
-        make -j4
-        make install
-        cd ..
+        && make clean
+        && make -j4
+        && make install
+        && cd ..
     
     - name: Build ZXN-SpriteLib
       run: sjasmplus src/main.asm --inc=inc --msg=war --fullpath 

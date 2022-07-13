@@ -8,7 +8,7 @@
 ;   stopAfter       - animated frames to compled before stopping the animation, 0-infinite
                     
     macro animation.Define firstPattern, frameCount, frameDelay, mode, stopAfter
-        db firstPattern, frameCount, frameDelay, mode, stopAfter
+        db firstPattern, frameCount-1, frameDelay, mode, stopAfter
     endm
 
     module animation

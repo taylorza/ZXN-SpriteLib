@@ -307,9 +307,8 @@ _selectRWPalette:
 ;       B   - Palette entries to update
 _loadPalette8:
         call _selectRWPalette
-        call util._write8bitPalette
-        ret        
-
+        jp util._write8bitPalette
+        
 ;------------------------------------------------------------------------------
 ; sprite._loadDefaultPalette - Load sprite default palette
 ; Input:

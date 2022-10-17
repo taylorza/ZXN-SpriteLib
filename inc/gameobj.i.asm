@@ -294,8 +294,7 @@ _updateAnimation:
 ; IX - Game Object
 _updateGameObj:
         res stateUpdateBit, (ix+S_GameObj.state); Clear the update flag
-        ld a, (ix+S_GameObj.state)
-
+        
         ; Load sprite into IY
         ld e, (ix+S_GameObj.sprite)
         ld d, (ix+S_GameObj.sprite+1)
